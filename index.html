@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Muhammad Faiq Syahmi | Software Developer</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="light">
+    <!-- Welcome Overlay -->
+    <div
+      id="welcome-overlay"
+      style="
+        position: fixed;
+        z-index: 9999;
+        inset: 0;
+        background: #181818cc;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        text-align: center;
+        -webkit-backdrop-filter: blur(24px);
+        backdrop-filter: blur(24px);
+      "
+    >
+      <h1 class="fade-in" style="font-size: 2rem; margin-bottom: 1rem">
+        For the full experience of modern web,<br />enter my website
+      </h1>
+      <div
+        class="fade-in delay-1"
+        style="display: flex; gap: 1rem; justify-content: center"
+      >
+        <button
+          id="enter-btn"
+          style="
+            padding: 0.75rem 2rem;
+            font-size: 1.1rem;
+            background: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.2s;
+          "
+        >
+          Enter Fullscreen
+        </button>
+        <button
+          id="cancel-btn"
+          style="
+            padding: 0.75rem 2rem;
+            font-size: 1.1rem;
+            background: #444;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.2s;
+          "
+        >
+          Cancel
+        </button>
+      </div>
+      <p
+        class="fade-in delay-2"
+        style="margin-top: 1.5rem; font-size: 0.95rem; color: #ccc"
+      >
+        You can exit fullscreen anytime by pressing <b>Esc</b>.
+      </p>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+      <div class="container">
+        <div class="logo">Portfolio</div>
+        <ul>
+          <li>
+            <a href="#home" data-tooltip="Home"
+              ><i class="fas fa-home"></i><span>Home</span></a
+            >
+          </li>
+          <li>
+            <a href="#projects" data-tooltip="Projects"
+              ><i class="fas fa-code"></i><span>Projects</span></a
+            >
+          </li>
+          <li>
+            <a href="#skills" data-tooltip="Skills"
+              ><i class="fas fa-cogs"></i><span>Skills</span></a
+            >
+          </li>
+          <li>
+            <a href="#education" data-tooltip="Education"
+              ><i class="fas fa-graduation-cap"></i><span>Education</span></a
+            >
+          </li>
+          <li>
+            <a href="#experience" data-tooltip="Experience"
+              ><i class="fas fa-briefcase"></i><span>Experience</span></a
+            >
+          </li>
+          <li>
+            <a href="#about" data-tooltip="About"
+              ><i class="fas fa-user"></i><span>About</span></a
+            >
+          </li>
+          <li>
+            <a href="#contact" data-tooltip="Contact"
+              ><i class="fas fa-envelope"></i><span>Contact</span></a
+            >
+          </li>
+        </ul>
+        <div class="nav-right">
+          <button class="theme-toggle" id="theme-toggle">
+            <i class="fas fa-moon"></i>
+          </button>
+          <button class="fullscreen-toggle" id="fullscreen-toggle">
+            <i class="fas fa-expand"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h4>Hi, my name is</h4>
+          <h1>Muhammad Faiq Syahmi Mayudin</h1>
+          <h2>I build things for the web and mobile.</h2>
+          <p>
+            I'm a Computer Science student specializing in software development,
+            currently focused on building responsive, accessible and performant
+            digital experiences with modern technologies like Flutter, React and
+            Laravel.
+          </p>
+          <div class="hero-buttons"></div>
+        </div>
+        <div class="hero-image">
+          <div class="image-wrapper">
+            <img
+              src="assets/images/profile-pic.png"
+              alt="Muhammad Faiq Syahmi"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+      <div class="container">
+        <div class="section-header">
+          <h2><span>02.</span> Featured Projects</h2>
+          <div class="divider"></div>
+        </div>
+        <div class="project-grid">
+          <!-- Project 1 -->
+          <div class="project-card">
+            <div class="project-image">
+              <img src="assets/images/project1.jpg" alt="SecureSense App" />
+              <div class="project-overlay">
+                <a href="#" class="project-link" target="_blank">
+                  <i class="fas fa-external-link-alt"></i>
+                </a>
+                <a href="#" class="project-link" target="_blank">
+                  <i class="fab fa-github"></i>
+                </a>
+              </div>
+            </div>
+            <div class="project-info">
+              <h3>SecureSense: Intelligent Threat Detection System</h3>
+              <p>
+                Final Year Project - A Flutter mobile and web application for
+                personal safety that enhances user security by integrating AI
+                for anomaly detection, real-time data processing and geofencing
+                technology.
+              </p>
+              <ul class="project-tech">
+                <li>Flutter</li>
+                <li>AI/ML</li>
+                <li>Firebase</li>
+                <li>Geofencing</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+          <div class="project-card">
+            <div class="project-image">
+              <img src="assets/images/project2.jpg" alt="Event Hive App" />
+              <div class="project-overlay">
+                <a href="#" class="project-link" target="_blank">
+                  <i class="fas fa-external-link-alt"></i>
+                </a>
+                <a href="#" class="project-link" target="_blank">
+                  <i class="fab fa-github"></i>
+                </a>
+              </div>
+            </div>
+            <div class="project-info">
+              <h3>Event Hive: Event Management System</h3>
+              <p>
+                A Java mobile application that improved organization, enhanced
+                participant experience and provided insights for organizers and
+                administrators with comprehensive event management features.
+              </p>
+              <ul class="project-tech">
+                <li>Java</li>
+                <li>Android Studio</li>
+                <li>SQLite</li>
+                <li>Material Design</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Project 3 -->
+          <div class="project-card">
+            <div class="project-image">
+              <img
+                src="assets/images/project3.jpg"
+                alt="Fitness Tracker System"
+              />
+              <div class="project-overlay">
+                <a href="#" class="project-link" target="_blank">
+                  <i class="fas fa-external-link-alt"></i>
+                </a>
+                <a href="#" class="project-link" target="_blank">
+                  <i class="fab fa-github"></i>
+                </a>
+              </div>
+            </div>
+            <div class="project-info">
+              <h3>Fitness Tracker System</h3>
+              <p>
+                A console-based application using C++ and MySQL, empowering
+                users to achieve their fitness goals with personalized plans,
+                progress tracking and a supportive community.
+              </p>
+              <ul class="project-tech">
+                <li>C++</li>
+                <li>MySQL</li>
+                <li>Console Application</li>
+                <li>Data Management</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Project 4 -->
+          <div class="project-card">
+            <div class="project-image">
+              <img
+                src="assets/images/project4.jpg"
+                alt="Theme Park Ticketing System"
+              />
+              <div class="project-overlay">
+                <a href="#" class="project-link" target="_blank">
+                  <i class="fas fa-external-link-alt"></i>
+                </a>
+                <a href="#" class="project-link" target="_blank">
+                  <i class="fab fa-github"></i>
+                </a>
+              </div>
+            </div>
+            <div class="project-info">
+              <h3>Theme Park Ticketing System</h3>
+              <p>
+                A Java Windows application developed using Eclipse with features
+                including online booking, real-time inventory management and
+                customizable ticket packages.
+              </p>
+              <ul class="project-tech">
+                <li>Java</li>
+                <li>Eclipse IDE</li>
+                <li>Swing/AWT</li>
+                <li>Database Integration</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+      <div class="container">
+        <div class="section-header">
+          <h2><span>03.</span> Skills & Technologies</h2>
+          <div class="divider"></div>
+        </div>
+        <div class="skills-grid">
+          <div class="skill-category">
+            <h3>Programming Languages</h3>
+            <div class="skill-items">
+              <div class="skill-item">
+                <i class="fab fa-java"></i>
+                <p>Java</p>
+              </div>
+              <div class="skill-item">
+                <i class="fas fa-code"></i>
+                <p>C++</p>
+              </div>
+              <div class="skill-item">
+                <i class="fab fa-js"></i>
+                <p>JavaScript</p>
+              </div>
+              <div class="skill-item">
+                <i class="fab fa-php"></i>
+                <p>PHP</p>
+              </div>
+              <div class="skill-item">
+                <i class="fab fa-python"></i>
+                <p>Python</p>
+              </div>
+              <div class="skill-item">
+                <i class="fas fa-mobile-alt"></i>
+                <p>Dart</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h3>Frameworks & Technologies</h3>
+            <div class="skill-items">
+              <div class="skill-item">
+                <i class="fas fa-mobile-alt"></i>
+                <p>Flutter</p>
+              </div>
+              <div class="skill-item">
+                <i class="fab fa-react"></i>
+                <p>React</p>
+              </div>
+              <div class="skill-item">
+                <i class="fab fa-laravel"></i>
+                <p>Laravel</p>
+              </div>
+              <div class="skill-item">
+                <i class="fab fa-html5"></i>
+                <p>HTML5</p>
+              </div>
+              <div class="skill-item">
+                <i class="fab fa-css3-alt"></i>
+                <p>CSS3</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h3>Databases & Tools</h3>
+            <div class="skill-items">
+              <div class="skill-item">
+                <i class="fas fa-database"></i>
+                <p>MySQL</p>
+              </div>
+              <div class="skill-item">
+                <i class="fas fa-fire"></i>
+                <p>Firebase</p>
+              </div>
+              <div class="skill-item">
+                <i class="fas fa-database"></i>
+                <p>SQLite</p>
+              </div>
+              <div class="skill-item">
+                <i class="fab fa-git-alt"></i>
+                <p>Git</p>
+              </div>
+              <div class="skill-item">
+                <i class="fab fa-github"></i>
+                <p>GitHub</p>
+              </div>
+              <div class="skill-item">
+                <i class="fas fa-code"></i>
+                <p>VS Code</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="education">
+      <div class="container">
+        <div class="section-header">
+          <h2><span>04.</span> Education</h2>
+          <div class="divider"></div>
+        </div>
+        <article>
+          <h3>
+            2023 - Present<br />Universiti Teknikal Malaysia Melaka (UTeM)
+          </h3>
+          <ul>
+            <li>
+              Bachelor of Computer Science (Software Development) with Honours
+            </li>
+            <li>Current GPA: 3.52</li>
+            <li>CGPA: 3.48</li>
+            <li>
+              Relevant Courses: Data Structure and Algorithm, Software
+              Engineering, Object-oriented Programming, Database Design,
+              Distributed Application Development
+            </li>
+          </ul>
+        </article>
+        <article>
+          <h3>
+            2021 - 2022<br />Universiti Teknologi MARA Dengkil, Selangor (UiTM)
+          </h3>
+          <ul>
+            <li>Foundation in Science</li>
+            <li>CGPA: 4.00</li>
+          </ul>
+        </article>
+        <article>
+          <h3>2016 - 2021<br />Sekolah Sultan Alam Shah, Putrajaya</h3>
+          <ul>
+            <li>Pure Science Stream</li>
+            <li>PT3: 7A3B</li>
+            <li>SPM: 6A3B</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- Work Experience Section -->
+    <section id="experience" class="experience">
+      <div class="container">
+        <div class="section-header">
+          <h2><span>05.</span> Work Experiences</h2>
+          <div class="divider"></div>
+        </div>
+        <article>
+          <h3>March 2025<br />Zetty Roses Garden and Farm, Terengganu</h3>
+          <strong>Administrative Assistant & Data Entry Clerk</strong>
+          <ul>
+            <li>
+              Assisted with daily administrative tasks including filing,
+              correspondence and scheduling to support smooth office operations.
+            </li>
+            <li>
+              Accurately entered and updated data from purchase receipts into
+              the database system, ensuring organized and reliable
+              recordkeeping.
+            </li>
+          </ul>
+        </article>
+        <article>
+          <h3>
+            December 2024<br />Miniso Pavilion Bukit Jalil and Sunway Velocity
+            Mall
+          </h3>
+          <strong>Event Pop Up Store Assistant</strong>
+          <ul>
+            <li>
+              Supported the successful operation of a temporary retail pop-up
+              store by assisting with day-to-day activities.
+            </li>
+            <li>
+              Assisted with inventory management, restocking and organization of
+              the store to ensure efficient daily operations.
+            </li>
+          </ul>
+        </article>
+        <article>
+          <h3>July 2021<br />Umira Nasi Kukus Terengganu</h3>
+          <strong>Restaurant Waiter</strong>
+          <ul>
+            <li>
+              Collaborated with kitchen staff to efficiently serve food and
+              beverages, ensuring a positive dining experience.
+            </li>
+            <li>
+              Managed customer orders, table service and maintained cleanliness
+              in the dining area to support high service standards.
+            </li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+      <div class="container">
+        <div class="section-header">
+          <h2><span>01.</span> About Me</h2>
+          <div class="divider"></div>
+        </div>
+        <div class="about-content">
+          <div class="about-text">
+            <p>
+              Hello! I'm Muhammad Faiq Syahmi Mayudin, a Computer Science
+              student at UTeM with a passion for creating digital solutions that
+              solve real-world problems. Currently pursuing my Bachelor's degree
+              with a CGPA of 3.48, I specialize in software development with a
+              focus on mobile and web technologies.
+            </p>
+            <p>
+              My journey spans from console applications in C++ to modern mobile
+              apps with Flutter and web development with React and Laravel. I'm
+              particularly interested in AI integration, security systems, and
+              creating user-centric applications that make a meaningful impact.
+            </p>
+            <p>
+              When I'm not coding, you can find me exploring new technologies,
+              working on personal projects, or contributing to open-source
+              initiatives. I'm always eager to learn new skills and collaborate
+              on interesting projects that challenge my abilities.
+            </p>
+            <div class="about-buttons">
+              <a href="assets/CV.pdf" class="btn" download>Download Resume</a>
+            </div>
+          </div>
+          <div class="about-image">
+            <div class="image-frame">
+              <img
+                src="assets/images/about-pic.jpg"
+                alt="Muhammad Faiq Syahmi"
+              />
+              <div class="frame-decoration"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+      <div class="container">
+        <div class="section-header">
+          <h2><span>04.</span> Get In Touch</h2>
+          <div class="divider"></div>
+        </div>
+        <div class="contact-content">
+          <div class="contact-text">
+            <h3>Let's Connect</h3>
+            <p>
+              I'm currently looking for internship opportunities and interesting
+              projects to collaborate on. Whether you have a question about my
+              projects or just want to say hi, I'll do my best to get back to
+              you!
+            </p>
+            <div class="contact-info">
+              <div class="info-item">
+                <i class="fas fa-envelope"></i>
+                <span>mfaiqsyahmi9@gmail.com</span>
+              </div>
+              <div class="info-item">
+                <i class="fas fa-phone"></i>
+                <span>+60 11 1124 3406</span>
+              </div>
+              <div class="info-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Selangor, Malaysia</span>
+              </div>
+            </div>
+          </div>
+          <form class="contact-form">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <input type="text" id="subject" name="subject" required />
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                required
+              ></textarea>
+            </div>
+            <button type="submit" class="btn">Send Message</button>
+          </form>
+        </div>
+      </div>
+      <div class="social-links">
+        <a
+          href="https://github.com/faiqsyhmi "
+          target="_blank"
+          aria-label="GitHub"
+        >
+          <i class="fab fa-github"></i>
+        </a>
+        <a
+          href="https://linkedin.com/in/faiq-syahmi-667a83204 "
+          target="_blank"
+          aria-label="LinkedIn"
+        >
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a
+          href="https://www.tiktok.com/@faiqsyhmi?lang=en"
+          target="_blank"
+          aria-label="TikTok"
+        >
+          <i class="fab fa-tiktok"></i>
+        </a>
+        <a
+          href="https://instagram.com/faiqsyhmi "
+          target="_blank"
+          aria-label="Instagram"
+        >
+          <i class="fab fa-instagram"></i>
+        </a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-links">
+            <a href="#home">Home</a>
+            <a href="#projects">Projects</a>
+            <a href="#skills">Skills</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+          </div>
+          <div class="footer-copy">
+            <p>Designed & Built by Muhammad Faiq Syahmi Mayudin</p>
+            <p>&copy; <span id="current-year"></span> All Rights Reserved</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button
+      id="back-to-top"
+      class="back-to-top improved-back-to-top"
+      aria-label="Back to Top"
+    >
+      <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>
