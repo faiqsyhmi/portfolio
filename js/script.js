@@ -132,43 +132,70 @@ if (contactForm) {
       return;
     }
 
-    // Simulate form submission
+    // Real form submission using EmailJS
     const submitBtn = this.querySelector('button[type="submit"]');
     if (!submitBtn) return;
 
     const originalText = submitBtn.textContent;
-
     submitBtn.textContent = "Sending...";
     submitBtn.disabled = true;
 
-    // Simulate API call
-    setTimeout(() => {
-      submitBtn.textContent = "Sent!";
+    // EmailJS send
+    emailjs
+      .send("service_73bw5va", "template_fy7boc5", {
+        from_name: nameValue,
+        from_email: emailValue,
+        subject: subjectValue,
+        message: messageValue,
+        to_email: "mfaiqsyahmi9@gmail.com", // Your email where you want to receive messages
+      })
+      .then(() => {
+        submitBtn.textContent = "Sent!";
 
-      // Show success message
-      const existingMessage = this.querySelector(".success-message");
-      if (existingMessage) {
-        existingMessage.remove();
-      }
+        // Show success message
+        const existingMessage = this.querySelector(".success-message");
+        if (existingMessage) {
+          existingMessage.remove();
+        }
 
-      const successMessage = document.createElement("div");
-      successMessage.className = "success-message";
-      successMessage.textContent = "Message sent successfully!";
-      successMessage.style.color = "var(--primary-color)";
-      successMessage.style.marginTop = "20px";
-      successMessage.style.textAlign = "center";
-      successMessage.style.fontWeight = "bold";
+        const successMessage = document.createElement("div");
+        successMessage.className = "success-message";
+        successMessage.textContent = "Message sent successfully!";
+        successMessage.style.color = "var(--primary-color)";
+        successMessage.style.marginTop = "20px";
+        successMessage.style.textAlign = "center";
+        successMessage.style.fontWeight = "bold";
 
-      this.appendChild(successMessage);
+        this.appendChild(successMessage);
 
-      // Reset form after delay
-      setTimeout(() => {
-        this.reset();
-        submitBtn.textContent = originalText;
-        submitBtn.disabled = false;
-        successMessage.remove();
-      }, 3000);
-    }, 1500);
+        // Reset form after delay
+        setTimeout(() => {
+          this.reset();
+          submitBtn.textContent = originalText;
+          submitBtn.disabled = false;
+          successMessage.remove();
+        }, 3000);
+      })
+      .catch((error) => {
+        console.error("EmailJS Error:", error);
+        submitBtn.textContent = "Failed to send";
+
+        // Show error message
+        const errorMessage = document.createElement("div");
+        errorMessage.className = "error-message";
+        errorMessage.textContent = "Failed to send message. Please try again.";
+        errorMessage.style.color = "red";
+        errorMessage.style.marginTop = "20px";
+        errorMessage.style.textAlign = "center";
+
+        this.appendChild(errorMessage);
+
+        setTimeout(() => {
+          submitBtn.textContent = originalText;
+          submitBtn.disabled = false;
+          errorMessage.remove();
+        }, 3000);
+      });
   });
 }
 
@@ -349,7 +376,7 @@ document.addEventListener("DOMContentLoaded", () => {
     sections.forEach((section) => {
       const sectionTop = section.offsetTop;
       const sectionBottom = sectionTop + section.offsetHeight;
-      
+
       if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
         currentSection = section.getAttribute("id");
       }
@@ -364,9 +391,11 @@ document.addEventListener("DOMContentLoaded", () => {
     navLinks.forEach((link) => {
       link.classList.remove("active");
       const href = link.getAttribute("href");
-      
-      if (href === `#${currentSection}` || 
-          (currentSection === "home" && (href === "#home" || href === "#"))) {
+
+      if (
+        href === `#${currentSection}` ||
+        (currentSection === "home" && (href === "#home" || href === "#"))
+      ) {
         link.classList.add("active");
       }
     });
@@ -390,38 +419,38 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Navigation tooltip functionality for collapsed sidebar
 document.addEventListener("DOMContentLoaded", () => {
-  const navLinks = document.querySelectorAll('nav ul li a[data-tooltip]');
-  
-  navLinks.forEach(link => {
+  const navLinks = document.querySelectorAll("nav ul li a[data-tooltip]");
+
+  navLinks.forEach((link) => {
     // Ensure tooltip shows only when sidebar is collapsed
-    link.addEventListener('mouseenter', () => {
-      const nav = document.querySelector('nav');
-      if (nav && !nav.matches(':hover')) {
+    link.addEventListener("mouseenter", () => {
+      const nav = document.querySelector("nav");
+      if (nav && !nav.matches(":hover")) {
         // Sidebar is collapsed, show tooltip
-        link.style.setProperty('--tooltip-visible', '1');
+        link.style.setProperty("--tooltip-visible", "1");
       }
     });
-    
-    link.addEventListener('mouseleave', () => {
-      link.style.setProperty('--tooltip-visible', '0');
+
+    link.addEventListener("mouseleave", () => {
+      link.style.setProperty("--tooltip-visible", "0");
     });
   });
 });
 
 // Handle sidebar logo visibility
 document.addEventListener("DOMContentLoaded", () => {
-  const nav = document.querySelector('nav');
-  const logo = document.querySelector('.logo');
-  
+  const nav = document.querySelector("nav");
+  const logo = document.querySelector(".logo");
+
   if (nav && logo) {
-    nav.addEventListener('mouseenter', () => {
-      logo.style.opacity = '1';
-      logo.style.width = 'auto';
+    nav.addEventListener("mouseenter", () => {
+      logo.style.opacity = "1";
+      logo.style.width = "auto";
     });
-    
-    nav.addEventListener('mouseleave', () => {
-      logo.style.opacity = '0';
-      logo.style.width = '0';
+
+    nav.addEventListener("mouseleave", () => {
+      logo.style.opacity = "0";
+      logo.style.width = "0";
     });
   }
 });
