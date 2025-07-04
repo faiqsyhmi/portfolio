@@ -1330,42 +1330,46 @@ body.overlay-active .custom-cursor {
   }
 }
 
-/* Custom Scrollbar for Light Theme */
-html.light::-webkit-scrollbar {
+/* Light Theme Scrollbar */
+body.light::-webkit-scrollbar {
   width: 10px;
-  background: #f0f4fa;
 }
-html.light::-webkit-scrollbar-thumb {
+
+body.light::-webkit-scrollbar-track {
+  background: #f0f4fa;
+  border-radius: 8px;
+}
+
+body.light::-webkit-scrollbar-thumb {
   background: var(--primary-color);
   border-radius: 8px;
   border: 2px solid #f0f4fa;
+  transition: background 0.3s ease;
 }
-html.light::-webkit-scrollbar-thumb:hover {
+
+body.light::-webkit-scrollbar-thumb:hover {
   background: var(--primary-hover);
 }
 
-/* Custom Scrollbar for Dark Theme */
-html.dark::-webkit-scrollbar {
+/* Dark Theme Scrollbar */
+body.dark::-webkit-scrollbar {
   width: 10px;
-  background: #181818;
 }
-html.dark::-webkit-scrollbar-thumb {
+
+body.dark::-webkit-scrollbar-track {
+  background: #181818;
+  border-radius: 8px;
+}
+
+body.dark::-webkit-scrollbar-thumb {
   background: var(--primary-color);
   border-radius: 8px;
   border: 2px solid #181818;
-}
-html.dark::-webkit-scrollbar-thumb:hover {
-  background: var(--primary-hover);
+  transition: background 0.3s ease;
 }
 
-/* For Firefox */
-body.light {
-  scrollbar-color: var(--primary-color) #f0f4fa;
-  scrollbar-width: thin;
-}
-body.dark {
-  scrollbar-color: var(--primary-color) #181818;
-  scrollbar-width: thin;
+body.dark::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-hover);
 }
 
 /* Project Tech Stack Badges */
@@ -1491,4 +1495,361 @@ body.dark {
   color: #00ffff;
   clip-path: inset(50% 0 0 0);
   animation-delay: 0.1s;
+}
+
+/* Add these mobile-responsive styles to your CSS */
+
+/* Mobile Navigation Adjustments */
+@media (max-width: 768px) {
+  /* Adjust body margin for mobile */
+  body {
+    margin-left: 0;
+  }
+
+  /* Mobile Navigation */
+  nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: auto;
+    height: auto;
+    width: 100%;
+    flex-direction: row;
+    padding: 10px;
+    z-index: 1000;
+  }
+
+  nav .container {
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    max-width: none;
+  }
+
+  .logo {
+    display: none; /* Hide logo on mobile */
+  }
+
+  nav ul {
+    flex-direction: row;
+    gap: 0;
+    justify-content: space-around;
+    width: 100%;
+    margin: 0;
+  }
+
+  nav ul li {
+    margin: 0;
+    width: auto;
+  }
+
+  nav ul li a {
+    flex-direction: column;
+    gap: 5px;
+    padding: 8px 12px;
+    text-align: center;
+    min-width: 50px;
+  }
+
+  nav ul li a span {
+    font-size: 0.7rem;
+    opacity: 1;
+    transform: none;
+  }
+
+  nav ul li a i {
+    font-size: 1rem;
+  }
+
+  /* Hide navigation hover effects on mobile */
+  nav:hover {
+    width: 100%;
+    padding: 10px;
+  }
+
+  nav ul li a::before {
+    display: none; /* Hide tooltips on mobile */
+  }
+
+  .nav-right {
+    display: none; /* Hide theme/fullscreen toggles on mobile or move to header */
+  }
+
+  /* Hero Section Mobile */
+  .hero {
+    padding: 120px 0 60px;
+    margin-bottom: 80px; /* Space for bottom nav */
+  }
+
+  .hero .container {
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+  }
+
+  .hero-content {
+    order: 2;
+  }
+
+  .hero-image {
+    order: 1;
+  }
+
+  .hero-image img {
+    max-width: 250px;
+    width: 100%;
+  }
+
+  /* Projects Section Mobile */
+  .project-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .project-card {
+    margin: 10px;
+  }
+
+  /* Skills Section Mobile */
+  .skills-grid {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 15px;
+  }
+
+  .skill-item {
+    padding: 20px 15px;
+    margin: 5px;
+  }
+
+  .skill-item i {
+    font-size: 2rem;
+  }
+
+  /* Contact Section Mobile */
+  .contact-content {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .contact-form {
+    max-width: 100%;
+  }
+
+  /* About Section Mobile */
+  .about-content {
+    flex-direction: column;
+    text-align: left;
+    gap: 30px;
+  }
+
+  .about-image {
+    order: -1;
+    text-align: center;
+  }
+
+  /* Education & Experience Mobile */
+  .education article,
+  .experience article {
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+
+  /* Typography Mobile */
+  h1 {
+    font-size: clamp(1.8rem, 4vw, 2.5rem) !important;
+  }
+
+  h2 {
+    font-size: clamp(1.5rem, 3vw, 2rem) !important;
+  }
+
+  h3 {
+    font-size: clamp(1.2rem, 2.5vw, 1.5rem) !important;
+  }
+
+  /* Form Mobile */
+  .form-group input,
+  .form-group textarea {
+    padding: 12px;
+    font-size: 16px; /* Prevent zoom on iOS */
+  }
+
+  /* Button Mobile */
+  .btn {
+    padding: 12px 24px;
+    font-size: 1rem;
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Back to Top Button Mobile */
+  .improved-back-to-top {
+    right: 1rem;
+    bottom: 100px; /* Above mobile nav */
+    width: 45px;
+    height: 45px;
+  }
+
+  /* Social Links Mobile */
+  .social-links {
+    margin-bottom: 100px; /* Space for bottom nav */
+  }
+
+  /* Footer Mobile */
+  footer {
+    margin-bottom: 80px; /* Space for mobile nav */
+    padding: 30px 20px;
+  }
+
+  .footer-content {
+    gap: 15px;
+  }
+
+  .footer-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  /* Sections Mobile Padding */
+  .projects,
+  .skills,
+  .education,
+  .experience,
+  .about,
+  .contact {
+    padding: 80px 0 60px;
+  }
+
+  /* Welcome Overlay Mobile */
+  #welcome-overlay h1 {
+    font-size: 1.5rem !important;
+    margin-bottom: 1.5rem;
+  }
+
+  #welcome-overlay button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  /* Custom Cursor - Disable on Mobile */
+  .custom-cursor {
+    display: none;
+  }
+
+  /* Particle Effects - Reduce on Mobile */
+  .particles-container {
+    display: none;
+  }
+
+  /* Project Tech Stack Mobile */
+  .project-tech {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .project-tech span {
+    font-size: 0.8rem;
+    padding: 3px 8px;
+  }
+}
+
+/* Small Mobile Devices */
+@media (max-width: 480px) {
+  .container {
+    width: 95%;
+    padding: 0 15px;
+  }
+
+  nav ul li a {
+    padding: 6px 8px;
+  }
+
+  nav ul li a span {
+    font-size: 0.65rem;
+  }
+
+  .hero {
+    padding: 100px 0 50px;
+  }
+
+  .project-card,
+  .skill-item {
+    margin: 5px;
+  }
+
+  .contact-content {
+    gap: 20px;
+  }
+
+  /* Smaller buttons on very small screens */
+  #welcome-overlay button {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Landscape Mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+  .hero {
+    padding: 100px 0 40px;
+  }
+
+  .hero .container {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .hero-image img {
+    max-width: 200px;
+  }
+
+  nav {
+    right: 0;
+    left: auto;
+    width: auto;
+    flex-direction: column;
+    height: 100vh;
+    padding: 20px 10px;
+  }
+
+  nav .container {
+    flex-direction: column;
+    height: 100%;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  body {
+    margin-left: 0;
+    margin-right: 70px;
+  }
+}
+
+/* Touch-friendly interactions */
+@media (hover: none) and (pointer: coarse) {
+  .project-card:hover,
+  .skill-item:hover {
+    transform: none;
+    box-shadow: 0 10px 30px rgba(2, 12, 27, 0.5);
+  }
+
+  .btn:hover {
+    transform: none;
+  }
+
+  /* Disable complex animations on touch devices */
+  .magnetic {
+    transform: none !important;
+  }
+
+  .glitch-text {
+    animation: none;
+  }
 }

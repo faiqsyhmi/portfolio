@@ -765,20 +765,154 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-// Remove duplicate scroll event listeners and consolidate
-// (Remove the duplicate sections at the end of your file)
+// Add these mobile-specific JavaScript adjustments to script.js
 
-// Clean up - remove these duplicate sections from the end of your file:
-/*
+// Mobile Detection
+const isMobile = () => {
+  return (
+    window.innerWidth <= 768 ||
+    /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      navigator.userAgent
+    )
+  );
+};
+
+// Disable complex animations on mobile for better performance
 document.addEventListener("DOMContentLoaded", () => {
-  const sections = document.querySelectorAll("section");
-  const navLinks = document.querySelectorAll(".nav-link");
-  // ... duplicate code
+  if (isMobile()) {
+    // Disable particle effects on mobile
+    const createParticles = () => {}; // Override function to do nothing
+
+    // Disable custom cursor on mobile
+    const createCustomCursor = () => {}; // Override function to do nothing
+
+    // Simplify magnetic effects on mobile
+    const createMagneticEffect = () => {}; // Override function to do nothing
+
+    // Disable glitch effects on mobile
+    const glitchText = () => {}; // Override function to do nothing
+  }
 });
 
+// Mobile Navigation Active State
 document.addEventListener("DOMContentLoaded", () => {
-  const sections = document.querySelectorAll("section");
-  const titles = document.querySelectorAll(".page-titles .title");
-  // ... duplicate code
+  if (isMobile()) {
+    const sections = document.querySelectorAll("section[id]");
+    const navLinks = document.querySelectorAll('nav ul li a[href^="#"]');
+
+    function updateActiveMobileNav() {
+      let currentSection = "home";
+      const scrollPosition = window.scrollY + 150; // Adjusted offset for mobile
+
+      sections.forEach((section) => {
+        const sectionTop = section.offsetTop;
+        const sectionBottom = sectionTop + section.offsetHeight;
+
+        if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+          currentSection = section.getAttribute("id");
+        }
+      });
+
+      if (window.scrollY < 150) {
+        currentSection = "home";
+      }
+
+      navLinks.forEach((link) => {
+        link.classList.remove("active");
+        const href = link.getAttribute("href");
+
+        if (
+          href === `#${currentSection}` ||
+          (currentSection === "home" && (href === "#home" || href === "#"))
+        ) {
+          link.classList.add("active");
+        }
+      });
+    }
+
+    // Initial call
+    updateActiveMobileNav();
+
+    // Throttled scroll listener for mobile
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          updateActiveMobileNav();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+  }
 });
-*/
+
+// Mobile Form Handling
+if (contactForm && isMobile()) {
+  // Prevent zoom on input focus for iOS
+  const inputs = contactForm.querySelectorAll("input, textarea");
+  inputs.forEach((input) => {
+    input.addEventListener("focus", () => {
+      if (input.type !== "email") {
+        input.style.fontSize = "16px";
+      }
+    });
+  });
+}
+
+// Mobile-specific smooth scrolling
+document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+  anchor.addEventListener("click", function (e) {
+    e.preventDefault();
+
+    const targetId = this.getAttribute("href");
+    if (targetId === "#" || targetId === "#home") {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+      return;
+    }
+
+    const targetElement = document.querySelector(targetId);
+    if (!targetElement) return;
+
+    // Mobile-specific offset calculation
+    const offset = isMobile() ? 100 : 90; // Account for mobile bottom nav
+    const targetPosition = targetElement.offsetTop - offset;
+
+    window.scrollTo({
+      top: targetPosition,
+      behavior: "smooth",
+    });
+  });
+});
+
+// Mobile Performance Optimizations
+if (isMobile()) {
+  // Reduce animation complexity
+  const style = document.createElement("style");
+  style.textContent = `
+    * {
+      animation-duration: 0.3s !important;
+      transition-duration: 0.3s !important;
+    }
+    
+    .project-card, .skill-item {
+      transform: none !important;
+    }
+  `;
+  document.head.appendChild(style);
+}
+
+// Handle mobile viewport height issues
+const setMobileVH = () => {
+  const vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty("--vh", `${vh}px`);
+};
+
+if (isMobile()) {
+  setMobileVH();
+  window.addEventListener("resize", setMobileVH);
+  window.addEventListener("orientationchange", setMobileVH);
+}
